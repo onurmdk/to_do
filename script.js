@@ -41,7 +41,12 @@ function elemanEkle(to_do){
     })
 }
 
-const to_do = [
+function kaydet(to_do){
+    localStorage.setItem("todolar",JSON.stringify(to_do));
+}
+
+let to_do;
+/*= [
     {
         title: "TO-DO projesi yapilacak.",
         description:"HTML,CSS ve JS kullanilacak.",
@@ -56,7 +61,14 @@ const to_do = [
         deadline_date:"25 Aug 2026",
         status:"Yapilacak"
     }
-]
+]*/
+const depo = localStorage.getItem("todolar");
+if(depo!=null){
+    to_do = JSON.parse(depo);
+}
+else{
+    to_do=[];
+}
 elemanEkle(to_do);
 
 const form = document.querySelector("#form");
@@ -68,11 +80,17 @@ const f_status = document.querySelector("#f_status");
 const buton = document.querySelector("#buton");
 buton.addEventListener("click",function(e){
     e.preventDefault();
+    console.log("tiklandi");
+    if(f_title.value ===""||f_desc.value===""||f_date.value===""){
+        alert("Formu doldurunuz")
+        return;
+    }
     const arr = {title: f_title.value,description: f_desc.value,critical_lvl: f_crlvl.value,deadline_date:f_date.value,status:f_status.value};
     console.log(arr);
     to_do.push(arr);
+    kaydet(to_do);
     console.log(f_title.value);
-    console.log("tiklandi");
+
     elemanEkle(to_do);
 });
 

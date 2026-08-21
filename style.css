@@ -1,5 +1,6 @@
 table{
     border: 1px solid black;
+    padding: 20px;
 }
 tr{
     border: 1px solid black;
@@ -11,4 +12,22 @@ th{
 td{
     border: 1px solid black;
 
+}
+form{
+    padding: 20px;
+    margin: 10px;
+    border: 1px dotted;
+    display: flex;
+}
+label{
+    padding: 5px;
+}
+input{
+     padding: 5px;
+}
+select{
+    padding: 10px;
+}
+button{
+    padding: 10px;
 }

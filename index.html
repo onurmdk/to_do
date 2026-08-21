@@ -7,15 +7,31 @@
     <title>TO-DO Listesi</title>
 </head>
 <body>
-    <table id="tablo">
-        <tr id="ilksatir">
-            <th>Title</th>
-            <th>Description</th>
-            <th>Critical Level</th>
-            <th>Deadline Date</th>
-            <th>Status</th>
-        </tr>
-    </table>
+    <table id="tablo"></table>
+
+    <form id="form">
+        <label>Title</label>
+        <input id="f_title" type="text" required><br>
+        <label>Description</label>
+        <input id="f_desc" type="text" required><br>
+        <label>Critical Level</label>
+        <select id="f_crlvl" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select><br>
+        <label>Deadline Date</label>
+        <input id="f_date" type="date" required><br>
+        <label>Status</label>
+        <select id="f_status" required>
+            <option value="yapilacak">Yapilacak</option>
+            <option value="devam">Devam Ediyor</option>
+            <option value="tamamlandi">Tamamlandi</option>
+        </select><br>
+        <button id="buton">Ekle ve Listeyi Guncelle</button>
+    </form>
     <script src="script.js"></script>
 </body>
 </html>

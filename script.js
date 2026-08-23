@@ -1,46 +1,26 @@
 function elemanEkle(){
-    tablo.innerHTML = "";
-    const satir_h = document.createElement("tr");
-    tablo.appendChild(satir_h);
-    const h1 = document.createElement("th");
-    h1.textContent = "Title";
-    satir_h.appendChild(h1);
-    const h2 = document.createElement("th");
-    h2.textContent = "Description";
-    satir_h.appendChild(h2);
-    const h3 = document.createElement("th");
-    h3.textContent = "Critical Level";
-    satir_h.appendChild(h3);
-    const h4 = document.createElement("th");
-    h4.textContent = "Deadline Date";
-    satir_h.appendChild(h4);
-    const h5 = document.createElement("th");
-    h5.textContent = "Status";
-    satir_h.appendChild(h5);
-    const h6 = document.createElement("th");
-    h6.textContent = "Islemler";
-    satir_h.appendChild(h6);
+    yapilacaklar_icerik.innerHTML = "";
+    devamEdiyor_icerik.innerHTML = "";
+    tamamlananlar_icerik.innerHTML = "";
     to_do.forEach(madde => {
-        const satir = document.createElement("tr");
-        tablo.appendChild(satir);
-        const s1 = document.createElement("td");
-        s1.textContent = madde.title;
-        satir.appendChild(s1);
-        const s2 = document.createElement("td");
-        s2.textContent = madde.description;
-        satir.appendChild(s2);
-        const s3 = document.createElement("td");
-        s3.textContent = madde.critical_lvl;
-        satir.appendChild(s3);
-        const s4 = document.createElement("td");
-        s4.textContent = madde.deadline_date;
-        satir.appendChild(s4);
-        const s5 = document.createElement("td");
-        s5.textContent = madde.status;
-        satir.appendChild(s5);
-        const s6 = document.createElement("td");
+        const kart = document.createElement("div");
+        kart.className = "kart"
+        const baslik = document.createElement("h3");
+        baslik.textContent = madde.title;
+        kart.appendChild(baslik);
+        const aciklama = document.createElement("p");
+        aciklama.textContent = madde.description;
+        kart.appendChild(aciklama);
+        const seviye = document.createElement("p");
+        seviye.textContent = "Critical Level: " + madde.critical_lvl;
+        kart.appendChild(seviye);
+        const tarih = document.createElement("p");
+        tarih.textContent = "Deadline Date: " + madde.deadline_date;
+        kart.appendChild(tarih);
+
         const editbuton = document.createElement("button");
         editbuton.textContent = "Edit";
+        editbuton.className = "btn-edit";
         editbuton.addEventListener("click", function(e){
             console.log(madde.id);
             const idli = to_do.find(liste => liste.id === madde.id);
@@ -51,34 +31,38 @@ function elemanEkle(){
             f_date.value = idli.deadline_date;
             f_status.value = idli.status;
         });
-        s6.appendChild(editbuton);
+        kart.appendChild(editbuton);
         const silbuton = document.createElement("button");
         silbuton.textContent = "Delete";
+        silbuton.className = "btn-delete";
         silbuton.addEventListener("click",function(e){
             to_do = to_do.filter(liste => liste.id !== madde.id);
             kaydet();
             elemanEkle();
-        })
-        s6.appendChild(silbuton);
-        satir.appendChild(s6);
-    })
+        });
+        kart.appendChild(silbuton);
+
+        let hedef;
+        if(madde.status === "Yapilacak"){
+            hedef = yapilacaklar_icerik;
+        } 
+        else if(madde.status === "Devam Ediyor"){
+            hedef = devamEdiyor_icerik;
+        } 
+        else {
+            hedef = tamamlananlar_icerik;
+        }
+        kart.className = "kart"; 
+        if(madde.status === "Yapilacak") kart.classList.add("k-yapilacak");
+        else if(madde.status === "Devam Ediyor") kart.classList.add("k-devam");
+        else kart.classList.add("k-tamamlandi");
+        hedef.appendChild(kart);
+    });
 }
 
 function kaydet(){
     localStorage.setItem("todolar",JSON.stringify(to_do));
 }
-console.log(to_do);
-let to_do;
-let editId = null;
-const depo = localStorage.getItem("todolar");
-
-if(depo!=null){
-    to_do = JSON.parse(depo);
-}
-else{
-    to_do=[];
-}
-elemanEkle();
 
 const form = document.querySelector("#form");
 const f_title = document.querySelector("#f_title");
@@ -90,6 +74,22 @@ const buton = document.querySelector("#buton");
 const yapilacaklar = document.querySelector("#yapilacaklar");
 const devamEdiyor = document.querySelector("#devamEdiyor");
 const tamamlananlar = document.querySelector("#tamamlananlar");
+const liste = document.querySelector("#liste");
+const yapilacaklar_icerik = document.querySelector("#yapilacaklar_icerik");
+const devamEdiyor_icerik = document.querySelector("#devamEdiyor_icerik");
+const tamamlananlar_icerik = document.querySelector("#tamamlananlar_icerik");
+
+let to_do;
+let editId = null;
+const depo = localStorage.getItem("todolar");
+
+if(depo!=null){
+    to_do = JSON.parse(depo);
+}
+else{
+    to_do=[];
+}
+elemanEkle();
 buton.addEventListener("click",function(e){
     e.preventDefault();
     console.log("tiklandi");

@@ -30,3 +30,12 @@ select{
 button{
     padding: 10px;
 }
+.lisle{
+    display: flex;
+    gap: 20px;
+}
+.kolon{
+    flex: 1;
+    border: 1px solid black;
+    padding: 10px;
+}

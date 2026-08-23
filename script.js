@@ -67,7 +67,7 @@ function elemanEkle(){
 function kaydet(){
     localStorage.setItem("todolar",JSON.stringify(to_do));
 }
-
+console.log(to_do);
 let to_do;
 let editId = null;
 const depo = localStorage.getItem("todolar");

@@ -4,7 +4,7 @@ function elemanEkle(){
     tamamlananlar_icerik.innerHTML = "";
     to_do.forEach(madde => {
         const kart = document.createElement("div");
-        kart.className = "kart"
+        kart.className = "kart";
         const baslik = document.createElement("h3");
         baslik.textContent = madde.title;
         kart.appendChild(baslik);
@@ -52,7 +52,6 @@ function elemanEkle(){
         else {
             hedef = tamamlananlar_icerik;
         }
-        kart.className = "kart"; 
         if(madde.status === "Yapilacak") kart.classList.add("k-yapilacak");
         else if(madde.status === "Devam Ediyor") kart.classList.add("k-devam");
         else kart.classList.add("k-tamamlandi");
@@ -92,7 +91,6 @@ else{
 elemanEkle();
 buton.addEventListener("click",function(e){
     e.preventDefault();
-    console.log("tiklandi");
     if(f_title.value ===""||f_desc.value===""||f_date.value===""){
         alert("Formu doldurunuz")
         return;

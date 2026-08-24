@@ -1,41 +1,83 @@
-table{
+body{
+    font-family: Arial, sans-serif;
+    background-color: whitesmoke;
+    max-width: 1200px; 
+    margin: auto; 
     padding: 20px;
-}
-tr{
-    border: 1px solid black;
-}
-th{
-    border: 1px solid black;
-
-}
-td{
-    border: 1px solid black;
-
 }
 form{
     padding: 20px;
     margin: 10px;
+    border-radius: 50px;
+    background-color: white;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 label{
     padding: 5px;
+    border-radius: 50px;
 }
 input{
     padding: 5px;
+    border: 1px solid black;
+    border-radius: 50px;
 }
 select{
     padding: 10px;
+    border: 1px solid black;
+    border-radius: 50px;
 }
 button{
     padding: 10px;
+    border: 1px solid black;
+    border-radius: 50px;
 }
-.lisle{
+#liste{
     display: flex;
     gap: 20px;
 }
 .kolon{
     flex: 1;
-    border: 1px solid black;
+    background-color: whitesmoke;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 50px;
+    padding: 15px;
+}
+.kart{
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 50px;
+    padding: 15px;
+}
+.kart button{
     padding: 10px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+.btn-edit{
+    background-color: blue;
+    color: white;
+}
+.btn-edit:hover{
+    background-color: darkblue;
+}
+.btn-delete{
+    background-color: red; 
+    color: white;
+}
+.btn-delete:hover{
+    background-color: darkred;
+}
+.k-yapilacak{ 
+    border-left: 5px solid red;
+}
+.k-devam{ 
+    border-left: 5px solid orange; 
+}
+.k-tamamlandi{ 
+    border-left: 5px solid green; 
 }

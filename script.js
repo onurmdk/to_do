@@ -5,46 +5,40 @@ function elemanEkle(){
     let todoCount = 0;
     let inprogressCount = 0;
     let completedCount = 0;
-    let flag = 0;
     to_do.forEach(madde => {
-        if(madde.status === "Yapilacak"){
-            hedef = yapilacaklar_icerik;
-            todoCount++;
-        } 
-        else if(madde.status === "Devam Ediyor"){
-            hedef = devamEdiyor_icerik;
-            inprogressCount++;
-            flag = 1;
-        } 
-        else {
-            hedef = tamamlananlar_icerik;
-            completedCount++;
-            flag = 2;
-        }
         const kart = document.createElement("div");
         kart.className = "kart";
+
         const baslik = document.createElement("h3");
         baslik.textContent = madde.title;
+
         kart.appendChild(baslik);
+
         const aciklama = document.createElement("p");
         aciklama.className = "task_desc";
         aciklama.textContent = madde.description;
         kart.appendChild(aciklama);
+
         const seviye = document.createElement("p");
         seviye.textContent = "Critical Level: " + madde.critical_lvl;
         kart.appendChild(seviye);
+
         const tarih = document.createElement("p");
         tarih.textContent = "Deadline Date: " + madde.deadline_date;
         kart.appendChild(tarih);
+
         const divbuttons = document.createElement("div");
         divbuttons.className = "div-buttons";
         kart.appendChild(divbuttons);
+
         const editbuton = document.createElement("button");
         editbuton.textContent = "Edit";
         editbuton.className = "btn-edit";
+
         editbuton.addEventListener("click", function(e){
             document.querySelector("#modal").style.display = "block";
             const idli = to_do.find(liste => liste.id === madde.id);
+
             editId = idli.id;
             f_title.value = idli.title;
             f_desc.value = idli.description;
@@ -53,6 +47,7 @@ function elemanEkle(){
             f_status.value = idli.status;
         });
         divbuttons.appendChild(editbuton);
+
         const silbuton = document.createElement("button");
         silbuton.textContent = "Delete";
         silbuton.className = "btn-delete";
@@ -65,6 +60,7 @@ function elemanEkle(){
             elemanEkle();
         });
         divbuttons.appendChild(silbuton);
+
         const addtaskbuton = document.createElement("button");
         addtaskbuton.textContent = "Add New Task";
         addtaskbuton.className = "btn-addtask";
@@ -73,20 +69,31 @@ function elemanEkle(){
             f_title.value = "";
             f_desc.value = "";
             f_date.value = "";
+            f_status.value = madde.status;
             f_crlvl.value = "1";
-            if(flag == 0){
-                f_status = "Yapilacak"
-            }
         })
         divbuttons.appendChild(addtaskbuton);
 
         let hedef;
-        
+
+        if(madde.status === "Yapilacak"){
+            hedef = yapilacaklar_icerik;
+            todoCount++;
+        } 
+        else if(madde.status === "Devam Ediyor"){
+            hedef = devamEdiyor_icerik;
+            inprogressCount++;
+        } 
+        else {
+            hedef = tamamlananlar_icerik;
+            completedCount++;
+        }
         if(madde.status === "Yapilacak") kart.classList.add("k-yapilacak");
         else if(madde.status === "Devam Ediyor") kart.classList.add("k-devam");
         else kart.classList.add("k-tamamlandi");
         hedef.appendChild(kart);
     });
+
     k1.textContent = "To-Do (" + todoCount + ")";
     k2.textContent = "In Progress (" + inprogressCount + ")";
     k3.textContent = "Completed (" + completedCount + ")";
@@ -97,24 +104,33 @@ function kaydet(){
 }
 
 const form = document.querySelector("#form");
+
 const f_title = document.querySelector("#f_title");
 const f_desc = document.querySelector("#f_desc");
 const f_crlvl = document.querySelector("#f_crlvl");
 const f_date = document.querySelector("#f_date");
 const f_status = document.querySelector("#f_status");
+
 const buton = document.querySelector("#buton");
+
 const yapilacaklar = document.querySelector("#yapilacaklar");
 const devamEdiyor = document.querySelector("#devamEdiyor");
 const tamamlananlar = document.querySelector("#tamamlananlar");
+
 const liste = document.querySelector("#liste");
+
 const yapilacaklar_icerik = document.querySelector("#yapilacaklar_icerik");
 const devamEdiyor_icerik = document.querySelector("#devamEdiyor_icerik");
 const tamamlananlar_icerik = document.querySelector("#tamamlananlar_icerik");
+
 const modal = document.querySelector("#modal");
+
 const k1 = document.querySelector("#k1");
 const k2 = document.querySelector("#k2");
 const k3 = document.querySelector("#k3");
-modal.style.display = "none";
+
+const baslik_buton = document.querySelector("#baslik_buton");
+
 let to_do;
 let editId = null;
 const depo = localStorage.getItem("todolar");
@@ -125,7 +141,16 @@ if(depo!=null){
 else{
     to_do=[];
 }
+
+modal.style.display = "none";
+
+baslik_buton.addEventListener("click",function(e){
+    modal.style.display = "none";
+})
+
+
 elemanEkle();
+
 buton.addEventListener("click",function(e){
     e.preventDefault();
     if(f_title.value ===""||f_desc.value===""||f_date.value===""){
@@ -147,9 +172,5 @@ buton.addEventListener("click",function(e){
     }
     kaydet();
     elemanEkle();
-    f_title.value = "";
-    f_desc.value = "";
-    f_date.value = "";
-    f_status.value = "Yapilacak";
-    f_crlvl.value = "1";
+    modal.style.display = "none";
 });

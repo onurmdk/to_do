@@ -7,7 +7,7 @@
     <title>TO-DO Listesi</title>
 </head>
 <body>
-    <h1 style="border-bottom: 3px solid rgb(137, 105, 44); color: rgb(95, 74, 35);; padding-bottom: 10px;">To-Do List</h1>
+    <h1 id="h1_title">To-Do List</h1>
     <div id="liste">
         <div id="yapilacaklar" class="kolon">
             <h2 id="k1">To-Do</h2>
@@ -24,13 +24,16 @@
     </div>
     <div id="modal">
         <form id="form">
-            <h3>Add New Task</h3>
+            <div id="baslik">
+                <button id="baslik_buton" class="butonlar">Close</button>
+                <h3 id="baslik_yazi">Add New Task</h3>
+            </div>
             <label>Title</label>
-            <input id="f_title" type="text" required><br>
+            <input id="f_title" type="text"><br>
             <label>Description</label>
-            <input id="f_desc" type="text" required><br>
+            <input id="f_desc" type="text"><br>
             <label>Critical Level</label>
-            <select id="f_crlvl" required>
+            <select id="f_crlvl" class="sel">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -38,14 +41,14 @@
                 <option value="5">5</option>
             </select><br>
             <label>Deadline Date</label>
-            <input id="f_date" type="date" required style="border: 1px solid black;"><br>
+            <input id="f_date" type="date" style="border: 1px solid black;" class="sel"><br>
             <label>Status</label>
-            <select id="f_status" required>
+            <select id="f_status" class="sel">
                 <option value="Yapilacak">To-Do</option>
                 <option value="Devam Ediyor">In Progress</option>
                 <option value="Tamamlandi">Completed</option>
             </select><br>
-            <button id="buton">Add / Update</button>
+            <button id="buton" class="butonlar">Add / Update</button>
         </form>
     </div>
     <script src="script.js"></script>

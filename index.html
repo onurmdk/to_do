@@ -22,30 +22,32 @@
             <div id="tamamlananlar_icerik"></div>
         </div>
     </div>
-    <form id="form">
-        <h3>Add New Task</h3>
-        <label>Title</label>
-        <input id="f_title" type="text" required><br>
-        <label>Description</label>
-        <input id="f_desc" type="text" required><br>
-        <label>Critical Level</label>
-        <select id="f_crlvl" required>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select><br>
-        <label>Deadline Date</label>
-        <input id="f_date" type="date" required style="border: 1px solid black;"><br>
-        <label>Status</label>
-        <select id="f_status" required>
-            <option value="Yapilacak">To-Do</option>
-            <option value="Devam Ediyor">In Progress</option>
-            <option value="Tamamlandi">Completed</option>
-        </select><br>
-        <button id="buton">Add / Update</button>
-    </form>
+    <div id="modal">
+        <form id="form">
+            <h3>Add New Task</h3>
+            <label>Title</label>
+            <input id="f_title" type="text" required><br>
+            <label>Description</label>
+            <input id="f_desc" type="text" required><br>
+            <label>Critical Level</label>
+            <select id="f_crlvl" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select><br>
+            <label>Deadline Date</label>
+            <input id="f_date" type="date" required style="border: 1px solid black;"><br>
+            <label>Status</label>
+            <select id="f_status" required>
+                <option value="Yapilacak">To-Do</option>
+                <option value="Devam Ediyor">In Progress</option>
+                <option value="Tamamlandi">Completed</option>
+            </select><br>
+            <button id="buton">Add / Update</button>
+        </form>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

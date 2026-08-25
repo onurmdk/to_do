@@ -10,20 +10,20 @@
     <h1 style="border-bottom: 3px solid rgb(137, 105, 44); color: rgb(95, 74, 35);; padding-bottom: 10px;">To-Do List</h1>
     <div id="liste">
         <div id="yapilacaklar" class="kolon">
-            <h2>Yapilacaklar</h2>
+            <h2 id="k1">To-Do</h2>
             <div id="yapilacaklar_icerik"></div>
         </div>
         <div id="devamEdiyor" class="kolon">
-            <h2>Devam Edenler</h2>
+            <h2 id="k2">In Progress</h2>
             <div id="devamEdiyor_icerik"></div>
         </div>
         <div id="tamamlananlar" class="kolon">
-            <h2>Tamamlananlar</h2>
+            <h2 id="k3">Completed</h2>
             <div id="tamamlananlar_icerik"></div>
         </div>
     </div>
     <form id="form">
-        <h3>Yeni Plan Ekleme Formu</h3>
+        <h3>Add New Task</h3>
         <label>Title</label>
         <input id="f_title" type="text" required><br>
         <label>Description</label>
@@ -40,11 +40,11 @@
         <input id="f_date" type="date" required style="border: 1px solid black;"><br>
         <label>Status</label>
         <select id="f_status" required>
-            <option value="Yapilacak">Yapilacak</option>
-            <option value="Devam Ediyor">Devam Ediyor</option>
-            <option value="Tamamlandi">Tamamlandi</option>
+            <option value="Yapilacak">To-Do</option>
+            <option value="Devam Ediyor">In Progress</option>
+            <option value="Tamamlandi">Completed</option>
         </select><br>
-        <button id="buton">Ekle ve Listeyi Guncelle</button>
+        <button id="buton">Add / Update</button>
     </form>
     <script src="script.js"></script>
 </body>

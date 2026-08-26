@@ -66,6 +66,7 @@ function elemanEkle(){
         addtaskbuton.className = "btn-addtask";
         addtaskbuton.addEventListener("click",function(e){
             document.querySelector("#modal").style.display = "block";
+            editId = null;
             f_title.value = "";
             f_desc.value = "";
             f_date.value = "";
@@ -142,9 +143,8 @@ else{
     to_do=[];
 }
 
-modal.style.display = "none";
-
 baslik_buton.addEventListener("click",function(e){
+    e.preventDefault();
     modal.style.display = "none";
 })
 
